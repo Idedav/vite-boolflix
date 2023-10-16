@@ -1,11 +1,16 @@
 <script>
 export default {
-    name: 'Card'
+    name: 'Card',
+    props:{
+      title: String
+    }
 }
 </script>
 
 <template>
-  <span>CARD</span>
+  <div class="card">
+    <h4>{{ title }}</h4>
+  </div>
 </template>
 
 <style>

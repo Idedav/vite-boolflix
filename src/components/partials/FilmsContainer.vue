@@ -2,8 +2,8 @@
 import { store } from '../../data/store';
 import Card from './Card.vue';
 export default {
-    name: 'SeriesContainer',
-    components:{
+    name: 'FilmContainer',
+    components: {
         Card
     },
     data(){
@@ -15,10 +15,10 @@ export default {
 </script>
 
 <template>
-  <h1>Serie TV</h1>
-  <Card v-for="card in store.seriesList"
+  <h1>Film</h1>
+  <Card v-for="card in store.movieList"
   :key="card.id"
-  :title="card.name"/>
+  :title="card.title"/>
 </template>
 
 <style>

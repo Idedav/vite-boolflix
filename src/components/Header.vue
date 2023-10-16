@@ -1,6 +1,12 @@
 <script>
+import { store } from '../data/store';
 export default {
-    name: 'Header'    
+    name: 'Header',
+    data(){
+        return{
+            store
+        }
+    }
 }
 </script>
 
@@ -11,7 +17,10 @@ export default {
         </div>
 
         <div class="search m-3">
-            <input type="text" class="mx-3">
+            <input v-model="store.filmToSearch" 
+            @keyup.enter="$emit('search')"
+            type="text" 
+            class="mx-3">
             <select name="" id="">
                 <option value=""></option>
                 <option value=""></option>
