@@ -18,7 +18,7 @@ export default {
 
 <template>
   <div class="container my-5">
-    <h1 v-if="store.movieList.length === 0">FAI LA TUA PRIMA RICERCA...</h1>
+    <h1 v-if="store.movie.length === 0">FAI LA TUA PRIMA RICERCA...</h1>
     <div v-else>
       <FilmsContainer />
       <SeriesContainer />

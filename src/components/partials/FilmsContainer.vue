@@ -16,7 +16,7 @@ export default {
 
 <template>
   <h1>Film</h1>
-  <Card v-for="card in store.movieList"
+  <Card v-for="card in store.movie"
   :key="card.id"
   :title="card.title"/>
 </template>

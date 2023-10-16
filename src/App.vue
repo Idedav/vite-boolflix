@@ -15,28 +15,17 @@ export default {
     }
   },
   methods:{
-    getApi(){
-      store.movieList = [];
-      store.seriesList = [];
-      axios.get(store.apiUrlMovie,{
+    getApi(type){
+      store.tv = [];
+      store.movie = [];
+      axios.get(store.apiUrl + type,{
         params:{
           api_key: 'e99307154c6dfb0b4750f6603256716d',
           query: store.filmToSearch
         }
       })
       .then(res =>{
-        store.movieList = res.data.results 
-        console.log(store.movieList);
-      })
-      axios.get(store.apiUrlSeries,{
-        params:{
-          api_key: 'e99307154c6dfb0b4750f6603256716d',
-          query: store.filmToSearch
-        }
-      })
-      .then(res =>{
-        store.seriesList = res.data.results
-        console.log(store.seriesList)
+        store[type] = res.data.results 
       })
     }
   },
@@ -46,7 +35,7 @@ export default {
 </script>
 
 <template>
-  <Header @search="getApi()"/>
+  <Header @search="getApi('movie'), getApi('tv')"/>
   <Main />
 </template>
 
