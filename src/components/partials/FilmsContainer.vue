@@ -15,12 +15,21 @@ export default {
 </script>
 
 <template>
-  <h1>Film</h1>
-  <Card v-for="card in store.movie"
-  :key="card.id"
-  :title="card.title"/>
+  <div class="container-fluid d-flex flex-wrap">
+    <h1>Film</h1>
+    <Card v-for="card in store.movie"
+    :key="card.id"
+    :cardObj="card"
+    :title="card.title"
+    :orginalTitle="card.original_title"/>
+  </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 
+  h1{
+    width: 100%;
+    margin-left: 15px;
+    font-size: 4.5rem;
+  }
 </style>

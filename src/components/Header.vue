@@ -22,9 +22,9 @@ export default {
             type="text" 
             class="mx-3">
             <select name="" id="">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <option value="all">All</option>
+                <option value="tv">Serie TV</option>
+                <option value="film">Film</option>
             </select>
         </div>
     </div>

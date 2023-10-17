@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div class="container my-5">
+  <div class="dc-container my-5">
     <h1 v-if="store.movie.length === 0">FAI LA TUA PRIMA RICERCA...</h1>
     <div v-else>
       <FilmsContainer />
@@ -26,6 +26,11 @@ export default {
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+
+.dc-container{
+  width: 80%;
+  margin: 0 auto;
+}
 
 </style>
