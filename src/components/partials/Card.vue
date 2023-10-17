@@ -1,6 +1,4 @@
 <script>
-import { store } from '../../data/store';
-
 export default {
     name: 'Card',
     props:{

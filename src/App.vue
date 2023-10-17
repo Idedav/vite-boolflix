@@ -27,6 +27,16 @@ export default {
       .then(res =>{
         store[type] = res.data.results 
       })
+    },
+    searchType(){
+      if(store.type === 'movie'){
+        this.getApi('movie');
+      }else if(store.type === 'tv'){
+        this.getApi('tv');
+      }else{        
+        this.getApi('movie');
+        this.getApi('tv');
+      }
     }
   },
   mounted(){
@@ -35,7 +45,7 @@ export default {
 </script>
 
 <template>
-  <Header @search="getApi('movie'), getApi('tv')"/>
+  <Header @search="searchType()"/>
   <Main />
 </template>
 

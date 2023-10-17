@@ -21,10 +21,11 @@ export default {
             @keyup.enter="$emit('search')"
             type="text" 
             class="mx-3">
-            <select name="" id="">
-                <option value="all">All</option>
+            <select v-model="store.type"
+            @click="$emit('search')">
+                <option value="">All</option>
                 <option value="tv">Serie TV</option>
-                <option value="film">Film</option>
+                <option value="movie">Film</option>
             </select>
         </div>
     </div>
