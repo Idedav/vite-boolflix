@@ -18,7 +18,10 @@ export default {
 
 <template>
   <div class="dc-container">
-    <h1 v-if="store.movie.length === 0 && store.tv.length === 0">FAI LA TUA PRIMA RICERCA...</h1>
+    <div v-if="store.movie.length === 0 && store.tv.length === 0"
+    class="message">
+      <h1>{{ store.message }}</h1>
+    </div>
     <div v-else>
       <FilmsContainer v-if="store.movie.length > 0"/>
       <SeriesContainer v-if="store.tv.length > 0"/>
@@ -30,8 +33,15 @@ export default {
 
 .dc-container{
   width: 80%;
+  min-height: 100vh;
   margin: 0 auto;
   padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .message h1{
+    font-size: 4.5rem;
+  }
 }
 
 </style>

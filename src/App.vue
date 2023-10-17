@@ -26,6 +26,12 @@ export default {
       })
       .then(res =>{
         store[type] = res.data.results 
+        if(store[type].length === 0){
+          store.message = 'Nessun risultato corrispondente a: ' + store.filmToSearch
+        }
+      })
+      .catch(err =>{
+        console.log(err);
       })
     },
     searchType(){

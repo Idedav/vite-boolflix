@@ -5,5 +5,6 @@ export const store = reactive({
     tv:[],
     movie: [],
     filmToSearch: '',
-    type:''
+    type:'',
+    message: 'Fai la tua prima ricerca...'
 })
