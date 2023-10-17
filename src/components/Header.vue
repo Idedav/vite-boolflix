@@ -12,11 +12,11 @@ export default {
 
 <template>
     <div class="container-fluid d-flex justify-content-between align-items-center">
-        <div class="logo m-3">
+        <div class="logo m-5">
             <img src="/public/logo-boolflix.png" alt="">
         </div>
 
-        <div class="search m-3">
+        <div class="search m-5">
             <input v-model="store.filmToSearch" 
             @keyup.enter="$emit('search')"
             type="text" 
@@ -33,11 +33,31 @@ export default {
 
 <style lang="scss" scoped>
 
+.container-fluid{
+    background-color: black;
+    position: fixed;
+    z-index: 2;
 .logo{
-    width: 200px;
+    width: 250px;
+    height: 100%;
+    display: flex;
+    align-items: center;
     img{
         width: 100%;
     }
 }
 
+input{
+    width: 300px;
+    height: 50px;
+    font-size: 1.7rem;
+    padding: 10px;
+}
+
+select{
+    width: 100px;
+    height: 40px;
+    font-size: 1.5rem;
+}
+}
 </style>

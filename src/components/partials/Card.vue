@@ -19,6 +19,11 @@ export default {
             return false
         }
       }
+    },
+    computed:{
+      rating(){
+        return Math.ceil(this.cardObj.vote_average / 2) 
+      }
     }
 }
 </script>
@@ -27,14 +32,21 @@ export default {
   <div class="dc-card">
       <img :src="[cardObj.poster_path === null ?  '/public/image_not_available.jpg' : `https://image.tmdb.org/t/p/w342${cardObj.poster_path}`]" alt="">
       <div class="overview">
-        <h1>{{ title }}</h1>
-        <h2>{{ orginalTitle }}</h2>
-        <div class="lang">
+        <div class="titles">
+          <h1>{{ title }}</h1>
+          <h2 v-if="title != orginalTitle">{{ orginalTitle }}</h2>
+        </div>
+        <div class="lang my-2">
           <img v-if="getFlag()"
           :src="`/public/${cardObj.original_language}.png`" alt="">
           <span v-else>{{ cardObj.original_language }}</span>
         </div>
-        <span>{{ cardObj.vote_average }}</span>
+        <div class="vote my-2">
+          <i v-for="rate in rating"
+          class="fa-solid fa-star"></i>
+          <i v-for="rate in 5 - rating"
+          class="fa-regular fa-star"></i>
+        </div>
         <p>{{ cardObj.overview }}</p>
       </div>
   </div>
@@ -47,29 +59,37 @@ export default {
   height: 550px;
   margin: 15px 15px;
   position: relative;
-  &:hover .overview{
-    display: block;
-  }
   img{
     width: 100%;
     height: 100%;
   }
   .overview{
     width: 100%;
-    height: 100%;
+    height: 0px;
     position: absolute;
-    top: 0px;
-    background-color: rgba(0, 0, 0, .5);
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, .7);
     color: white;
-    padding: 20px;
     overflow: auto;
-    display: none;
+    transition: height .5s;
+    .titles,
+    .lang,
+    .vote,
     p{
+      padding: 5px 20px;
+    }
+    .vote{
       font-size: 1.5rem;
     }
-    .lang{
-      width: 50px;
+    p{
+      font-size: 1.6rem;
     }
+    .lang{
+      width: 100px;
+    }
+  }
+  &:hover .overview{
+    height: 100%;
   }
 }
 

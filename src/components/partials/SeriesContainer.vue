@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div class="container-fluid d-flex flex-wrap">
+  <div class="container-fluid d-flex flex-wrap my-5">
     <h1>Serie TV</h1>
     <Card v-for="card in store.tv"
     :key="card.id"
