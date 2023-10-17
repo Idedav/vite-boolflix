@@ -49,6 +49,9 @@ export default {
   height: 550px;
   margin: 15px 15px;
   position: relative;
+  &:hover .overview{
+    display: block;
+  }
   img{
     width: 100%;
     height: 100%;
@@ -62,10 +65,7 @@ export default {
     color: white;
     padding: 20px;
     overflow: auto;
-    // display: none;
-    // &:hover{
-    //   display: block;
-    // }
+    display: none;
     p{
       font-size: 1.5rem;
     }
