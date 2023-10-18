@@ -4,18 +4,14 @@ export default {
     props:{
       cardObj: Object,
     },
+    data(){
+      return{
+        flags: ['en', 'it']
+      }
+    },
     methods:{
-      getFlag(){
-        switch(this.cardObj.original_language){
-          case 'en':
-            return true
-            break;
-          case 'it':
-            return true
-            break;
-          default:
-            return false
-        }
+      getFlag(img){
+        return new URL( `../../assets/img/${img}.png`, import.meta.url).href
       }
     },
     computed:{
@@ -37,8 +33,8 @@ export default {
           </h2>
         </div>
         <div class="lang my-2">
-          <img v-if="getFlag()"
-          :src="`/${cardObj.original_language}.png`" alt="">
+          <img v-if="flags.includes(cardObj.original_language)"
+          :src="getFlag(cardObj.original_language)" alt="">
           <span v-else>{{ cardObj.original_language }}</span>
         </div>
         <div class="vote my-2">
