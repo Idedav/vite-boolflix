@@ -3,8 +3,6 @@ export default {
     name: 'Card',
     props:{
       cardObj: Object,
-      title: String,
-      orginalTitle: String
     },
     methods:{
       getFlag(){
@@ -30,15 +28,17 @@ export default {
 
 <template>
   <div class="dc-card">
-      <img :src="[cardObj.poster_path === null ?  '/public/image_not_available.jpg' : `https://image.tmdb.org/t/p/w342${cardObj.poster_path}`]" alt="">
+      <img :src="[cardObj.poster_path === null ?  '/image_not_available.jpg' : `https://image.tmdb.org/t/p/w342${cardObj.poster_path}`]" alt="">
       <div class="overview">
         <div class="titles">
-          <h1>{{ title }}</h1>
-          <h2 v-if="title != orginalTitle">{{ orginalTitle }}</h2>
+          <h1>{{ cardObj.title || cardObj.name }}</h1>
+          <h2 v-if="cardObj.title != cardObj.original_title || cardObj.name != cardObj.original_name">
+            {{ cardObj.original_title || cardObj.original_name}}
+          </h2>
         </div>
         <div class="lang my-2">
           <img v-if="getFlag()"
-          :src="`/public/${cardObj.original_language}.png`" alt="">
+          :src="`/${cardObj.original_language}.png`" alt="">
           <span v-else>{{ cardObj.original_language }}</span>
         </div>
         <div class="vote my-2">
@@ -55,8 +55,8 @@ export default {
 <style lang="scss" scoped>
 
 .dc-card {
-  width: 350px;
-  height: 550px;
+  width: 300px;
+  height: 500px;
   margin: 15px 15px;
   position: relative;
   img{

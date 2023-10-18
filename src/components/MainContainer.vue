@@ -1,12 +1,10 @@
 <script>
 import { store } from '../data/store';
-import FilmsContainer from './partials/FilmsContainer.vue';
-import SeriesContainer from './partials/SeriesContainer.vue';
+import Card from './partials/Card.vue';
 export default {
     name: 'Main',
     components:{
-        FilmsContainer,
-        SeriesContainer
+        Card
     },
     data(){
       return{
@@ -23,9 +21,24 @@ export default {
       <h1>{{ store.message }}</h1>
     </div>
     <div v-else>
-      <FilmsContainer v-if="store.movie.length > 0"/>
-      <SeriesContainer v-if="store.tv.length > 0"/>
-    </div>
+
+      <div v-if="store.type != 'tv'" 
+      class="container-fluid d-flex flex-wrap my-5">
+        <h1>Film</h1>
+        <Card v-for="card in store.movie"
+        :key="card.id"
+        :cardObj="card"/>
+      </div>
+
+      <div v-if="store.type != 'film'" 
+      class="container-fluid d-flex flex-wrap my-5">
+        <h1>Serie TV</h1>
+        <Card v-for="card in store.tv"
+        :key="card.id"
+        :cardObj="card"/>
+      </div>
+
+  </div>
   </div>
 </template>
 
@@ -39,9 +52,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  .message h1{
-    font-size: 4.5rem;
-  }
+  h1{
+      width: 100%;
+      margin-left: 15px;
+      font-size: 4.5rem;
+    }
 }
+
 
 </style>

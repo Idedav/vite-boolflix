@@ -2,12 +2,12 @@
 import axios from 'axios'
 import { store } from './data/store';
 import Header from './components/Header.vue'
-import Main from './components/Main.vue'
+import MainContainer from './components/MainContainer.vue'
 export default {
   name: 'App',
   components:{
     Header,
-    Main
+    MainContainer
   },
   data(){
     return{
@@ -52,7 +52,7 @@ export default {
 
 <template>
   <Header @search="searchType()"/>
-  <Main />
+  <MainContainer />
 </template>
 
 <style lang="scss">
